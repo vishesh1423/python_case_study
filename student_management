@@ -1,0 +1,244 @@
+
+students =[{'roll': 101, 'name': 'Rahul', 'age': 20, 'course': 'Python', 'marks': 85},
+{'roll': 102, 'name': 'Neha', 'age': 19, 'course': 'SQL', 'marks': 92},
+{'roll': 103, 'name': 'Amit', 'age': 22, 'course': 'Python', 'marks': 74},
+{'roll': 104, 'name': 'Priya', 'age': 21, 'course': 'AI', 'marks': 96},
+{'roll': 105, 'name': 'Rohan', 'age': 20, 'course': 'Python', 'marks': 67}]
+
+
+# Display the details of every student stored in the institute .
+
+for student in students:
+  print(student)
+
+
+# Print only the names of all students . 
+
+for student in students:
+  print(student["name"])
+
+# Calculate the total marks obtained by all students .
+
+total = 0
+for student in students:
+  print(student["marks"] )
+  total += student["marks"]
+
+print(total)
+
+# Find Average Marks of the class .
+
+total = 0
+n = len(students)
+for student in students:
+  print(student["marks"])
+  total += student["marks"]
+
+print("avg marks -->" , total/n)
+
+# Count Passed Students
+# passing marks is 70
+
+count = 0
+for student in students:
+  if student["marks"]>=70:
+    print(student["name"] , "will be pass")
+    count += 1
+
+
+  else:
+    print(student["name"] , "will be fail")
+
+
+print("number of passed students will be -->" , count)
+
+# Write a function to Print Grade of Every Student
+# Rules : 90+ --> A , 75+ --> B , 60+ --> C , else --> D
+
+
+def grade(marks):
+  if marks > 90:
+    print(student["name"] , "will get A" )
+  elif marks > 75:
+    print(student["name"] , "will get B")
+  elif marks > 60:
+    print(student["name"] , "will get C")
+  else:
+    print(student["name"] , "will get D")
+
+
+for student in students:
+  grade(student["marks"])
+
+
+# Create a function to Search Student by their Roll Number . 
+
+
+
+def search(roll_no):
+  for student in students:
+    if student["roll"] == roll_no:
+      print(student)
+      return "student found"
+
+  return "student not found"
+
+  
+
+roll_no = int(input("enter your roll number-->"))
+ans = search(roll_no)
+print(ans)
+
+
+# Search Student by Name
+# Ignore case while searching.
+
+
+def search(name):
+  for student in students:
+    if student["name"].lower() == name.lower():
+      print(student)
+      return"student will be found"
+
+  return "student not found"
+
+
+# name = input("enter your name-->")
+# ans1 = search(name)
+# print(ans1)
+
+
+name = search(input("enter your name-->"))
+print(name)
+
+
+# Write a function to print the topper of the class.
+
+
+def topper(students):
+  max_marks = 0
+  topper = {}
+  for student in students:
+    if student["marks"] > max_marks:
+      max_marks = student["marks"]
+      topper = student
+      
+
+  return topper 
+
+
+ans2 = topper(students)
+print(ans2)
+
+
+# Count Students in Each Course .
+
+courses = {}
+for student in students:
+  if student["course"] not in courses:
+    courses[student["course"]] = 1
+
+  else:
+    courses[student["course"]] += 1
+    
+
+print(courses)
+
+
+# Remove Duplicate Courses . 
+
+courses_1 = []
+for student in students:
+  courses_1.append(student["course"])
+print(courses_1)
+s = set(courses_1)
+    
+
+print(s)
+
+
+# Create Student Class (OOP) in the above format . 
+
+
+class student():
+  def __init__(self , name , age , roll , course , marks):
+    self.name = name
+    self.age = age
+    self.roll = roll
+    self.course = course
+    self.marks = marks
+
+  def display(self):
+    print("name:", self.name , ", age:" , self.age , ", roll:" , self.roll , ", course:" , self.course , ", marks:" , self.marks)
+
+s1 = student("rahul" , 20 , 101 , "python" , 85)
+s2 = student("neha" , 19 , 102 , "sql" , 92)
+s3 = student("amit" , 22 , 103 , "python" , 74)
+s4 = student("priya" , 21 , 104 , "ai" , 96)
+s5 = student("rohan" , 20 , 105 , "python" , 67)
+
+
+s1.display()
+s2.display()
+s3.display()
+s4.display()
+s5.display()
+
+
+# Build Complete Student Management Menu
+# 2 Display Students
+# 3 Search Student
+# 4 Find Topper
+# 5 Calculate Average
+# 6 Exit
+
+while True:
+
+  choice = int(input("enter your value-->"))
+
+  if choice == 2:
+    for student in students:
+      print(student)
+
+  elif choice == 3:
+    def search(roll_no):
+      for student in students:
+        if student["roll"] == roll_no:
+          print(student)
+          return "student found"
+
+      return "student not found"
+
+  elif choice == 4:
+    def topper(students):
+      max_marks = 0
+      topper = {}
+      for student in students:
+        if student["marks"] > max_marks:
+          max_marks = student["marks"]
+          topper = student
+      
+
+      return topper 
+
+
+    ans2 = topper(students)
+    print(ans2)
+
+  elif choice == 5:
+    total = 0
+    n = len(students)
+    for student in students:
+      print(student["marks"])
+      total += student["marks"]
+
+    print("avg marks -->" , total/n)
+    break
+
+
+  else:
+    print("Invalid Choise")
+    print("Exit")
+
+
+  
